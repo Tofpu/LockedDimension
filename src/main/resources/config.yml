@@ -1,0 +1,27 @@
+# EXAMPLE
+#  (WORLD-NAME):
+#    lock: false // If its enabled, it would not let the player go to the dimension through the portal.
+#    permission: "ld.nether" // This cannot be empty. If the player does not have this permission. it would not let them through.
+#    denied-message: "You do not have permission to go to the nether." // when player does not have message.
+#    succeed-message: "Welcome welcome!" // If this is empty. it wouldn't send anything. when player has permission.
+#    locked-message: "Nether has been locked." If this is empty. it wouldn't send anything. when its locked.
+
+dimensions:
+  example_world:
+    lock: false
+    permission: "ld.example_world"
+    denied-message: "You do not have permission to go to the example_world."
+    succeed-message: "Welcome welcome!"
+    locked-message: "example_world has been locked."
+  example_end:
+    lock: true
+    permission: "ld.example_end"
+    denied-message: "You do not have permission to go to the example_end."
+    succeed-message: ""
+    locked-message: ""
+  example_the_end:
+    lock: false
+    permission: "ld.example_the_end"
+    denied-message: "You do not have permission to go to the example_the_end."
+    succeed-message: ""
+    locked-message: "example_the_end has been locked."
