@@ -7,12 +7,23 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 
 public class DimensionManager {
-    private final FileConfiguration config;
+    private FileConfiguration config;
     protected String worldName = "";
     
     private static final ArrayList<Dimension> dimensions = new ArrayList<>();
     
     public DimensionManager(FileConfiguration config){
+        this.config = config;
+        for(String key : config.getConfigurationSection("dimensions").getKeys(false)) {
+            worldName = key;
+            Options options = new Options(key, isLocked(), getPermission(), getDeniedMessage(), getSucceedMessage(), getLockedMessage());
+            Dimension dimension = new Dimension(options);
+            dimensions.add(dimension);
+        }
+    }
+    
+    public void reload(FileConfiguration config){
+        dimensions.clear();
         this.config = config;
         for(String key : config.getConfigurationSection("dimensions").getKeys(false)) {
             worldName = key;

@@ -4,3 +4,6 @@ main: me.tofpu.lockeddimension.LockedDimension
 api-version: 1.16
 authors: [Tofpu]
 description: A plugin which its purpose is lock certain dimensions behind a permission node.
+commands:
+  lockeddimension:
+    description: A command
