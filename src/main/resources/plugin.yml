@@ -1,8 +1,10 @@
 name: LockedDimension
 version: ${project.version}
 main: me.tofpu.lockeddimension.LockedDimension
-api-version: 1.16
+api-version: 1.13
 authors: [Tofpu]
+softdepend:
+  - PlaceholderAPI
 description: A plugin which its purpose is lock certain dimensions behind a permission node.
 commands:
   lockeddimension:

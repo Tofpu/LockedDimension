@@ -4,16 +4,18 @@ public class Options {
     private String worldName = null;
     private boolean isLocked = false;
     private String permission = null;
-    private String deniedMessage = null;
     private String succeedMessage = null;
+    private String broadcastMessage = null;
+    private String deniedMessage = null;
     private String lockedMessage = null;
     
-    public Options(String worldName, boolean isLocked, String permission, String deniedMessage, String succeedMessage, String lockedMessage){
+    public Options(String worldName, boolean isLocked, String permission, String succeedMessage, String broadcastMessage, String deniedMessage, String lockedMessage){
         this.worldName = worldName;
         this.isLocked = isLocked;
         this.permission = permission;
-        this.deniedMessage = deniedMessage;
         this.succeedMessage = succeedMessage;
+        this.broadcastMessage = broadcastMessage;
+        this.deniedMessage = deniedMessage;
         this.lockedMessage = lockedMessage;
     }
     
@@ -63,5 +65,9 @@ public class Options {
     
     public String getLockedMessage() {
         return lockedMessage;
+    }
+    
+    public String getBroadcastMessage() {
+        return broadcastMessage;
     }
 }

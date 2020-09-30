@@ -10,12 +10,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class LockedDimension extends JavaPlugin {
     private DimensionManager manager;
+    private boolean enabledPAPI;
     
     @Override
     public void onEnable() {
         // Plugin startup logic
         this.saveDefaultConfig();
-        this.manager = new DimensionManager(this.getConfig());
+        this.enabledPAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
+        this.manager = new DimensionManager(this, this.getConfig());
     
         int pluginId = 8999;
         new Metrics(this, pluginId);
@@ -43,5 +45,9 @@ public final class LockedDimension extends JavaPlugin {
     
     public DimensionManager getManager() {
         return manager;
+    }
+    
+    public boolean isEnabledPAPI() {
+        return enabledPAPI;
     }
 }
