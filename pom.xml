@@ -6,7 +6,7 @@
 
     <groupId>me.Tofpu</groupId>
     <artifactId>LockedDimension</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>LockedDimension</name>
@@ -43,7 +43,7 @@
                             <relocations>
                                 <relocation>
                                     <pattern>org.bstats</pattern>
-                                    <shadedPattern>me.tofpu.lockeddimension</shadedPattern>
+                                    <shadedPattern>me.tofpu.lockeddimension.libs.bstats</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

@@ -1,8 +1,8 @@
-package me.tofpu.lockeddimension.commands.commands;
+package me.tofpu.lockeddimension.commands;
 
 import me.tofpu.lockeddimension.LockedDimension;
 import me.tofpu.lockeddimension.Utils;
-import me.tofpu.lockeddimension.commands.commands.module.CommandHandler;
+import me.tofpu.lockeddimension.commands.module.CommandHandler;
 import org.bukkit.command.CommandSender;
 
 public class Reload extends CommandHandler {

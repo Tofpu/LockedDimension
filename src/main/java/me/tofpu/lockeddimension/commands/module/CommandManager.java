@@ -1,4 +1,4 @@
-package me.tofpu.lockeddimension.commands.commands.module;
+package me.tofpu.lockeddimension.commands.module;
 
 import me.tofpu.lockeddimension.LockedDimension;
 import me.tofpu.lockeddimension.Utils;

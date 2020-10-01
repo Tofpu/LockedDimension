@@ -1,7 +1,8 @@
 package me.tofpu.lockeddimension;
 
-import me.tofpu.lockeddimension.commands.commands.Reload;
-import me.tofpu.lockeddimension.commands.commands.module.CommandManager;
+import me.tofpu.lockeddimension.updatechecker.SpigotUpdater;
+import me.tofpu.lockeddimension.commands.Reload;
+import me.tofpu.lockeddimension.commands.module.CommandManager;
 import me.tofpu.lockeddimension.modules.DimensionManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -29,6 +30,7 @@ public final class LockedDimension extends JavaPlugin {
         
         new Reload(this).register();
         
+        Bukkit.getPluginManager().registerEvents(new SpigotUpdater(this), this);
         Bukkit.getPluginManager().registerEvents(new PlayerPortalListener(this), this);
     }
     

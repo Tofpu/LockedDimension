@@ -1,4 +1,4 @@
-package me.tofpu.lockeddimension.commands.commands.module;
+package me.tofpu.lockeddimension.commands.module;
 
 import org.bukkit.command.CommandSender;
 

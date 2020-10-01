@@ -1,3 +1,8 @@
+# IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT /
+# If you are going to use the sound feature, make sure you are using 1.13.2 sound names.
+# It doesn't matter if you are on lower versions. it'll work regardless. as long as its in the game, of course. If you need help, feel free to join our discord. (listed in the resource section)
+# Here's the link: https://helpch.at/docs/1.13.2/org/bukkit/Sound.html
+#
 # EXAMPLE
 #  (WORLD-NAME):
 #    lock: false // If its enabled, it would not let the player go to the dimension through the portal.
@@ -6,6 +11,15 @@
 #    broadcast-message: "%player_name% has traveled to the nether." // If this is empty. it wouldn't send anything. If the player succeeds to go to the dimension, it would broadcast a message to everyone.
 #    denied-message: "You do not have permission to go to the nether." // when player does not have message.
 #    locked-message: "Nether has been locked." If this is empty. it wouldn't send anything. when its locked.
+#    succeed-sound: CLICK // this is optional. played when the player is going to the world
+#    denied-sound: CLICK // this is optional. played when the player does not have permission.
+#    locked-sound: CLICK this is optional. played when the world is locked
+
+settings:
+  # if you would not like notified once there's an update, tick it to false
+  notify-updates: true
+  # If you like to get notified if the world/sound doesn't exist. tick it to true
+  check-errors: false
 
 dimensions:
   example_world:
@@ -15,6 +29,9 @@ dimensions:
     broadcast-message: "%player_name% has traveled to the nether."
     denied-message: "You do not have permission to go to the example_world."
     locked-message: "example_world has been locked."
+    succeed-sound: CLICK
+    denied-sound: CLICK
+    locked-sound: CLICK
   example_end:
     lock: true
     permission: "ld.example_end"
@@ -22,6 +39,9 @@ dimensions:
     broadcast-message: "%player_name% has traveled to the nether."
     denied-message: "You do not have permission to go to the example_end."
     locked-message: ""
+    succeed-sound: CLICK
+    denied-sound: CLICK
+    locked-sound: CLICK
   example_the_end:
     lock: false
     permission: "ld.example_the_end"
@@ -29,3 +49,6 @@ dimensions:
     broadcast-message: "%player_name% has traveled to the nether."
     denied-message: "You do not have permission to go to the example_the_end."
     locked-message: "example_the_end has been locked."
+    succeed-sound: CLICK
+    denied-sound: CLICK
+    locked-sound: CLICK
