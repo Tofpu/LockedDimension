@@ -18,7 +18,7 @@ public final class LockedDimension extends JavaPlugin {
         // Plugin startup logic
         this.saveDefaultConfig();
         this.enabledPAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
-        this.manager = new DimensionManager(this, this.getConfig());
+        this.manager = new DimensionManager(this, this.getConfig()).init();
     
         int pluginId = 8999;
         new Metrics(this, pluginId);

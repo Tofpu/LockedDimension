@@ -5,69 +5,100 @@ public class Options {
     private boolean isLocked;
     private String permission;
     private String succeedMessage;
-    private final String broadcastMessage;
+    private String broadcastMessage;
     private String deniedMessage;
     private String lockedMessage;
     
-    private final String succeedSound;
-    private final String deniedSound;
-    private final String lockedSound;
+    private String succeedSound;
+    private String deniedSound;
+    private String lockedSound;
     
-    public Options(String worldName, boolean isLocked, String permission, String succeedMessage, String broadcastMessage, String deniedMessage, String lockedMessage, String succeedSound, String deniedSound, String lockedSound){
-        this.worldName = worldName;
-        this.isLocked = isLocked;
-        this.permission = permission;
-        this.succeedMessage = succeedMessage;
-        this.broadcastMessage = broadcastMessage;
-        this.deniedMessage = deniedMessage;
-        this.lockedMessage = lockedMessage;
-        this.succeedSound = succeedSound;
-        this.deniedSound = deniedSound;
-        this.lockedSound = lockedSound;
+//    public Options(String worldName, boolean isLocked, String permission, String succeedMessage, String broadcastMessage, String deniedMessage, String lockedMessage, String succeedSound, String deniedSound, String lockedSound){
+//        this.worldName = worldName;
+//        this.isLocked = isLocked;
+//        this.permission = permission;
+//        this.succeedMessage = succeedMessage;
+//        this.broadcastMessage = broadcastMessage;
+//        this.deniedMessage = deniedMessage;
+//        this.lockedMessage = lockedMessage;
+//        this.succeedSound = succeedSound;
+//        this.deniedSound = deniedSound;
+//        this.lockedSound = lockedSound;
+//    }
+    
+    public Options build(){
+        return this;
     }
     
-    public void setWorldName(String worldName) {
+    public Options setWorldName(String worldName) {
         this.worldName = worldName;
+        return this;
+    }
+    
+    public Options setPermission(String permission) {
+        this.permission = permission;
+        return this;
+    }
+    
+    public Options setLockedMessage(String lockedMessage) {
+        this.lockedMessage = lockedMessage;
+        return this;
+    }
+    
+    public Options setDeniedMessage(String deniedMessage) {
+        this.deniedMessage = deniedMessage;
+        return this;
+    }
+    
+    public Options setLocked(boolean locked) {
+        isLocked = locked;
+        return this;
+    }
+    
+    public Options setSucceedMessage(String succeedMessage) {
+        this.succeedMessage = succeedMessage;
+        return this;
+    }
+    
+    public Options setBroadcastMessage(String broadcastMessage) {
+        this.broadcastMessage = broadcastMessage;
+        return this;
+    }
+    
+    public Options setSucceedSound(String succeedSound) {
+        this.succeedSound = succeedSound;
+        return this;
+    }
+    
+    public Options setDeniedSound(String deniedSound) {
+        this.deniedSound = deniedSound;
+        return this;
+    }
+    
+    public Options setLockedSound(String lockedSound) {
+        this.lockedSound = lockedSound;
+        return this;
     }
     
     public String getWorldName() {
         return worldName;
     }
     
-    public void setLocked(boolean locked) {
-        isLocked = locked;
-    }
-    
     public boolean isLocked() {
         return isLocked;
-    }
-    
-    public void setPermission(String permission) {
-        this.permission = permission;
     }
     
     public String getPermission() {
         return permission;
     }
     
-    public void setDeniedMessage(String lockedMessage) {
-        this.deniedMessage = lockedMessage;
-    }
     
     public String getDeniedMessage() {
         return deniedMessage;
     }
     
-    public void setSucceedMessage(String succeedMessage) {
-        this.succeedMessage = succeedMessage;
-    }
-    
     public String getSucceedMessage() {
         return succeedMessage;
-    }
-    
-    public void setLockedMessage(String lockedMessage) {
-        this.lockedMessage = lockedMessage;
     }
     
     public String getLockedMessage() {
