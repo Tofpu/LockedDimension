@@ -16,13 +16,13 @@ public class ConfigChecker {
             if (!isWorldExist(world)){
                 warn(world + " world does not exist. make sure its spelled correctly.");
             }
-            if (!isSoundExist(succeed)){
+            if (isSoundNull(succeed)){
                 warn(succeed + " sound does not exist. make sure its spelled correctly.");
             }
-            if (!isSoundExist(denied)){
+            if (isSoundNull(denied)){
                 warn(denied + " sound does not exist. make sure its spelled correctly.");
             }
-            if (!isSoundExist(locked)){
+            if (isSoundNull(locked)){
                 warn(locked + " sound does not exist. make sure its spelled correctly.");
             }
         }
@@ -37,12 +37,12 @@ public class ConfigChecker {
         return false;
     }
     
-    public boolean isSoundExist(String key){
+    public boolean isSoundNull(String key){
         try {
-            Sound sound = Sound.valueOf(key);
-            return true;
-        } catch (IllegalArgumentException ignored){
+            Sound.valueOf(key);
             return false;
+        } catch (IllegalArgumentException ignored){
+            return true;
         }
     }
     

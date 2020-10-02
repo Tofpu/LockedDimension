@@ -1,17 +1,17 @@
 package me.tofpu.lockeddimension.modules;
 
 public class Options {
-    private String worldName = null;
-    private boolean isLocked = false;
-    private String permission = null;
-    private String succeedMessage = null;
-    private String broadcastMessage = null;
-    private String deniedMessage = null;
-    private String lockedMessage = null;
+    private String worldName;
+    private boolean isLocked;
+    private String permission;
+    private String succeedMessage;
+    private final String broadcastMessage;
+    private String deniedMessage;
+    private String lockedMessage;
     
-    private String succeedSound = null;
-    private String deniedSound = null;
-    private String lockedSound = null;
+    private final String succeedSound;
+    private final String deniedSound;
+    private final String lockedSound;
     
     public Options(String worldName, boolean isLocked, String permission, String succeedMessage, String broadcastMessage, String deniedMessage, String lockedMessage, String succeedSound, String deniedSound, String lockedSound){
         this.worldName = worldName;

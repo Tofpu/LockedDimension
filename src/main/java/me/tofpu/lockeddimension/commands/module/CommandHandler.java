@@ -8,7 +8,7 @@ public class CommandHandler {
     private String name = null;
     private String permission = "";
     private String description = "";
-    private int tabArgs = 1;
+    private final int tabArgs = 1;
     
     public void onCommand(CommandSender sender, String[] args){
     
@@ -40,14 +40,6 @@ public class CommandHandler {
     
     public void register(){
         CommandManager.commands.add(this);
-    }
-    
-    public void setTabArgs(int tabArgs) {
-        this.tabArgs = tabArgs;
-    }
-    
-    public int getTabArgs() {
-        return tabArgs;
     }
     
     public List<String> onTabComplete() {

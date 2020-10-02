@@ -1,7 +1,7 @@
 package me.tofpu.lockeddimension.commands;
 
 import me.tofpu.lockeddimension.LockedDimension;
-import me.tofpu.lockeddimension.Utils;
+import me.tofpu.lockeddimension.UtilsHelper;
 import me.tofpu.lockeddimension.commands.module.CommandHandler;
 import org.bukkit.command.CommandSender;
 
@@ -21,6 +21,6 @@ public class Reload extends CommandHandler {
         lockedDimension.reload();
         long end = System.currentTimeMillis();
         int time = (int) (end - start);
-        sender.sendMessage(String.format(Utils.color("&8[&5Locked&dDimension&8] &dYou have successfully reloaded the &7config.yml &8(%dms)"), time));
+        sender.sendMessage(String.format(UtilsHelper.color("&8[&5Locked&dDimension&8] &dYou have successfully reloaded the &7config.yml &8(%dms)"), time));
     }
 }

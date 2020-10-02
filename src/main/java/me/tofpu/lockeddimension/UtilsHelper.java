@@ -4,7 +4,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-public class Utils {
+public class UtilsHelper {
     public static String color(String message){
         return ChatColor.translateAlternateColorCodes('&', message);
     }
