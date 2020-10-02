@@ -4,6 +4,7 @@ import me.tofpu.lockeddimension.LockedDimension;
 import me.tofpu.lockeddimension.UtilsHelper;
 import me.tofpu.lockeddimension.builders.MessageBuilder;
 import me.tofpu.lockeddimension.builders.SoundBuilder;
+import org.apache.commons.lang.NullArgumentException;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -48,43 +49,37 @@ public class DimensionManager {
         }
     }
     
-    public void success(Player player, String worldName){
+    public void success(Player player, String worldName) {
         Dimension dimension = getDimension(worldName);
-        if (dimension == null){
+        if (dimension == null) {
             return;
         }
         Options options = dimension.getOptions();
         MessageBuilder messageBuilder = options.getMessageBuilder();
         SoundBuilder soundBuilder = options.getSoundBuilder();
-        
+    
         String success = messageBuilder.getSucceedMessage();
         String broadcast = messageBuilder.getBroadcastMessage();
         String sound = soundBuilder.getSucceedSound();
-        if (lockedDimension.isEnabledPAPI()){
-            success = UtilsHelper.parse(player, messageBuilder.getSucceedMessage());
+    
+        try {
+            UtilsHelper.playSound(player, Sound.valueOf(sound));
+        } catch (IllegalArgumentException e) {
+            lockedDimension.getLogger().warning(sound + " does not exist.");
         }
-        if (lockedDimension.isEnabledPAPI()){
-            broadcast = UtilsHelper.parse(player, messageBuilder.getBroadcastMessage());
-        }
-        if (sound != null) {
-            try {
-                Sound enumSound = Sound.valueOf(sound);
-                player.playSound(player.getLocation(), enumSound, 1, 1);
-            } catch (IllegalArgumentException e) {
-                lockedDimension.getLogger().warning(sound + " does not exist.");
-            }
-        }
-        if (success != null && !success.isEmpty()) {
-            player.sendMessage(UtilsHelper.color(success));
-        }
+        
         if (broadcast != null && !broadcast.isEmpty()) {
-            player.sendMessage(UtilsHelper.color(broadcast));
+            player.sendMessage(UtilsHelper.color(lockedDimension.isEnabledPAPI() ? UtilsHelper.parse(player, broadcast) : broadcast));
+        }
+        
+        if (success != null && !success.isEmpty()) {
+            player.sendMessage(UtilsHelper.color(lockedDimension.isEnabledPAPI() ? UtilsHelper.parse(player, success) : success));
         }
     }
     
-    public void deny(Player player, String worldName){
+    public void deny(Player player, String worldName) {
         Dimension dimension = getDimension(worldName);
-        if (dimension == null){
+        if (dimension == null) {
             return;
         }
         Options options = dimension.getOptions();
@@ -93,25 +88,21 @@ public class DimensionManager {
     
         String locked = messageBuilder.getDeniedMessage();
         String sound = soundBuilder.getDeniedSound();
-        if (lockedDimension.isEnabledPAPI()){
-            locked = UtilsHelper.parse(player, messageBuilder.getDeniedMessage());
+        
+        try {
+            UtilsHelper.playSound(player, Sound.valueOf(sound));
+        } catch (IllegalArgumentException e) {
+            lockedDimension.getLogger().warning(sound + " does not exist.");
         }
-        if (sound != null) {
-            try {
-                Sound enumSound = Sound.valueOf(sound);
-                player.playSound(player.getLocation(), enumSound, 1, 1);
-            } catch (IllegalArgumentException e) {
-                lockedDimension.getLogger().warning(sound + " does not exist.");
-            }
-        }
+        
         if (locked != null && !locked.isEmpty()) {
-            player.sendMessage(UtilsHelper.color(locked));
+            player.sendMessage(UtilsHelper.color(lockedDimension.isEnabledPAPI() ? UtilsHelper.parse(player, locked) : locked));
         }
     }
     
-    public void lock(Player player, String worldName){
+    public void lock(Player player, String worldName) {
         Dimension dimension = getDimension(worldName);
-        if (dimension == null){
+        if (dimension == null) {
             return;
         }
         Options options = dimension.getOptions();
@@ -120,19 +111,15 @@ public class DimensionManager {
     
         String disabled = messageBuilder.getLockedMessage();
         String sound = soundBuilder.getLockedSound();
-        if (lockedDimension.isEnabledPAPI()){
-            disabled = UtilsHelper.parse(player, messageBuilder.getLockedMessage());
+    
+        try {
+            UtilsHelper.playSound(player, Sound.valueOf(sound));
+        } catch (IllegalArgumentException e) {
+            lockedDimension.getLogger().warning(sound + " does not exist.");
         }
-        if (sound != null) {
-            try {
-                Sound enumSound = Sound.valueOf(sound);
-                player.playSound(player.getLocation(), enumSound, 1, 1);
-            } catch (IllegalArgumentException e) {
-                lockedDimension.getLogger().warning(sound + " does not exist.");
-            }
-        }
+        
         if (disabled != null && !disabled.isEmpty()) {
-            player.sendMessage(UtilsHelper.color(disabled));
+            player.sendMessage(UtilsHelper.color(lockedDimension.isEnabledPAPI() ? UtilsHelper.parse(player, disabled) : disabled));
         }
     }
     public Options getOptions(String key, ConfigValues values){

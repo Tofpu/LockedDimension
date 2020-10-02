@@ -5,6 +5,7 @@ import me.tofpu.lockeddimension.modules.Dimension;
 import me.tofpu.lockeddimension.modules.DimensionManager;
 import me.tofpu.lockeddimension.modules.Options;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 public class UtilsHelper {
@@ -24,5 +25,9 @@ public class UtilsHelper {
             }
         }
         return false;
+    }
+    
+    public static void playSound(Player player, Sound sound){
+        player.playSound(player.getLocation(), sound, 1f, 1f);
     }
 }
