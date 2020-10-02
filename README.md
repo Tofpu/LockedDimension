@@ -1,3 +1,4 @@
+[![codebeat badge](https://codebeat.co/badges/d13702d5-ab14-4fd9-9432-ab7db5de1875)](https://codebeat.co/projects/github-com-tofpu-lockeddimension-dev)
 <img src="https://proxy.spigotmc.org/c643e762791ba5b45c20afee0e888854d37dd59f?url=https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F731174366103994381%2F760648239824896000%2FLockedDimension_bannar.png">
 
 ---
