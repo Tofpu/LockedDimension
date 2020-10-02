@@ -40,19 +40,24 @@ public class DimensionManager {
         for(String key : config.getConfigurationSection("dimensions").getKeys(false)) {
             worldName = key;
             configChecker.check(key, getSucceedSound(), getDeniedSound(), getLockedSound());
-            
+
 //            Options options = new Options(key, isLocked(), getPermission(), getSucceedMessage(), getBroadcastMessage(), getDeniedMessage(), getLockedMessage(), getSucceedSound(), getDeniedSound(), getLockedSound());
             Options options = new Options()
                     .setWorldName(key)
                     .setLocked(isLocked())
                     .setPermission(getPermission())
-                    .setSucceedMessage(getSucceedMessage())
-                    .setBroadcastMessage(getBroadcastMessage())
-                    .setDeniedMessage(getDeniedMessage())
-                    .setLockedMessage(getLockedMessage())
-                    .setSucceedSound(getSucceedSound())
-                    .setDeniedSound(getDeniedSound())
-                    .setLockedSound(getLockedSound()).build();
+                    .setMessageBuilder(new MessageBuilder()
+                            .setSucceedMessage(getSucceedMessage())
+                            .setBroadcastMessage(getBroadcastMessage())
+                            .setDeniedMessage(getDeniedMessage())
+                            .setLockedMessage(getLockedMessage())
+                            .build())
+                    .setSoundBuilder(new SoundBuilder()
+                            .setDeniedSound(getDeniedSound())
+                            .setLockedSound(getLockedSound())
+                            .setLockedSound(getLockedSound())
+                            .build())
+                    .build();
             Dimension dimension = new Dimension(options);
             dimensions.add(dimension);
         }
@@ -104,15 +109,17 @@ public class DimensionManager {
             return;
         }
         Options options = dimension.getOptions();
+        MessageBuilder messageBuilder = options.getMessageBuilder();
+        SoundBuilder soundBuilder = options.getSoundBuilder();
         
-        String success = options.getSucceedMessage();
-        String broadcast = options.getBroadcastMessage();
-        String sound = options.getSucceedSound();
+        String success = messageBuilder.getSucceedMessage();
+        String broadcast = messageBuilder.getBroadcastMessage();
+        String sound = soundBuilder.getSucceedSound();
         if (lockedDimension.isEnabledPAPI()){
-            success = UtilsHelper.parse(player, options.getSucceedMessage());
+            success = UtilsHelper.parse(player, messageBuilder.getSucceedMessage());
         }
         if (lockedDimension.isEnabledPAPI()){
-            broadcast = UtilsHelper.parse(player, options.getBroadcastMessage());
+            broadcast = UtilsHelper.parse(player, messageBuilder.getBroadcastMessage());
         }
         if (sound != null) {
             try {
@@ -165,11 +172,13 @@ public class DimensionManager {
             return;
         }
         Options options = dimension.getOptions();
+        MessageBuilder messageBuilder = options.getMessageBuilder();
+        SoundBuilder soundBuilder = options.getSoundBuilder();
     
-        String locked = options.getDeniedMessage();
-        String sound = options.getDeniedSound();
+        String locked = messageBuilder.getDeniedMessage();
+        String sound = soundBuilder.getDeniedSound();
         if (lockedDimension.isEnabledPAPI()){
-            locked = UtilsHelper.parse(player, options.getDeniedMessage());
+            locked = UtilsHelper.parse(player, messageBuilder.getDeniedMessage());
         }
         if (sound != null) {
             try {
@@ -212,11 +221,13 @@ public class DimensionManager {
             return;
         }
         Options options = dimension.getOptions();
+        MessageBuilder messageBuilder = options.getMessageBuilder();
+        SoundBuilder soundBuilder = options.getSoundBuilder();
     
-        String disabled = options.getLockedMessage();
-        String sound = options.getLockedSound();
+        String disabled = messageBuilder.getLockedMessage();
+        String sound = soundBuilder.getLockedSound();
         if (lockedDimension.isEnabledPAPI()){
-            disabled = UtilsHelper.parse(player, options.getLockedMessage());
+            disabled = UtilsHelper.parse(player, messageBuilder.getLockedMessage());
         }
         if (sound != null) {
             try {
@@ -254,7 +265,7 @@ public class DimensionManager {
     }
     
     public final boolean isLocked(){
-        return config.getBoolean("dimensions." + worldName + ".lock");
+        return config.getBoolean(PATH + worldName + ".lock");
     }
     
     public final String getPermission(){
