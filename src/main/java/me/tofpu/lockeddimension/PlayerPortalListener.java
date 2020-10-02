@@ -1,5 +1,6 @@
 package me.tofpu.lockeddimension;
 
+import me.tofpu.lockeddimension.modules.Dimension;
 import me.tofpu.lockeddimension.modules.DimensionManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,15 +18,17 @@ public class PlayerPortalListener implements Listener {
     public void onPlayerPortal(PlayerPortalEvent e) {
         Player player = e.getPlayer();
         String world = e.getTo().getWorld().getName();
+        
         DimensionManager manager = lockedDimension.getManager();
+        Dimension dimension = manager.getDimension(world);
     
-        if (manager.worldExists(world)) {
-            if (manager.getWorldStatus(world)){
+        if (dimension != null) {
+            if (dimension.getOptions().isLocked()){
                 e.setCancelled(true);
                 manager.lock(player, world);
                 return;
             }
-            if (!manager.hasPermission(player, world)) {
+            if (!UtilsHelper.hasPermission(player, world)) {
                 e.setCancelled(true);
                 manager.deny(player, world);
             } else {

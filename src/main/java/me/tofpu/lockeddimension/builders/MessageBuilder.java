@@ -1,4 +1,4 @@
-package me.tofpu.lockeddimension.modules;
+package me.tofpu.lockeddimension.builders;
 
 public class MessageBuilder {
     private String succeedMessage;
