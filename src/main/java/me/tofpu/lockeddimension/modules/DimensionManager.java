@@ -41,38 +41,11 @@ public class DimensionManager {
         this.configValues.setConfig(config);
         for(String key : config.getConfigurationSection("dimensions").getKeys(false)) {
             ConfigValues values = configValues;
-            values.setWorldName(key);
             configChecker.check(key, values.getSucceedSound(), values.getDeniedSound(), values.getLockedSound());
 
-            Options options = new Options()
-                    .setWorldName(key)
-                    .setLocked(values.isLocked())
-                    .setPermission(values.getPermission())
-                    .setMessageBuilder(new MessageBuilder()
-                            .setSucceedMessage(values.getSucceedMessage())
-                            .setBroadcastMessage(values.getBroadcastMessage())
-                            .setDeniedMessage(values.getDeniedMessage())
-                            .setLockedMessage(values.getLockedMessage())
-                            .build())
-                    .setSoundBuilder(new SoundBuilder()
-                            .setSucceedSound(values.getSucceedSound())
-                            .setDeniedSound(values.getDeniedSound())
-                            .setLockedSound(values.getLockedSound())
-                            .setLockedSound(values.getLockedSound())
-                            .build())
-                    .build();
+            Options options = getOptions(key, this.configValues);
             dimensions.add(new Dimension(options));
         }
-    }
-    
-    public Dimension getDimension(String worldName){
-        for(Dimension dimension : dimensions) {
-            Options options = dimension.getOptions();
-            if (options.getWorldName().equalsIgnoreCase(worldName)) {
-                return dimension;
-            }
-        }
-        return null;
     }
     
     public void success(Player player, String worldName){
@@ -162,6 +135,36 @@ public class DimensionManager {
             player.sendMessage(UtilsHelper.color(disabled));
         }
     }
+    public Options getOptions(String key, ConfigValues values){
+        values.setWorldName(key);
+        return new Options()
+                .setWorldName(key)
+                .setLocked(values.isLocked())
+                .setPermission(values.getPermission())
+                .setMessageBuilder(new MessageBuilder()
+                        .setSucceedMessage(values.getSucceedMessage())
+                        .setBroadcastMessage(values.getBroadcastMessage())
+                        .setDeniedMessage(values.getDeniedMessage())
+                        .setLockedMessage(values.getLockedMessage())
+                        .build())
+                .setSoundBuilder(new SoundBuilder()
+                        .setSucceedSound(values.getSucceedSound())
+                        .setDeniedSound(values.getDeniedSound())
+                        .setLockedSound(values.getLockedSound())
+                        .setLockedSound(values.getLockedSound())
+                        .build())
+                .build();
+    }
+    
+    public Dimension getDimension(String worldName){
+        for(Dimension dimension : dimensions) {
+            Options options = dimension.getOptions();
+            if (options.getWorldName().equalsIgnoreCase(worldName)) {
+                return dimension;
+            }
+        }
+        return null;
+    }
     
     public static List<Dimension> getDimensions() {
         return dimensions;
@@ -169,9 +172,5 @@ public class DimensionManager {
     
     public static String getPATH() {
         return PATH;
-    }
-    
-    public String getWorldName() {
-        return worldName;
     }
 }
