@@ -2,6 +2,8 @@
 
 ---
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/752354b000294148ab97a979fa66c474)](https://app.codacy.com/gh/Tofpu/LockedDimension?utm_source=github.com&utm_medium=referral&utm_content=Tofpu/LockedDimension&utm_campaign=Badge_Grade)
+
 ## Description
 You could disable, lock dimensions behind permissions nodes, and much more. all within a single plugin.​
 
