@@ -11,14 +11,14 @@ It should be able to support Spigot version, 1.8.9 and higher!
 
 ## Features
 **You have the ability to:**
- 1. Lock your dimension with or without a permision node.
- 1. Send a message to the player when they have permission, not have permission and when its locked. (succeed, denied, locked)
+ 1.  Lock your dimension with or without a permision node.
+ 1.   Send a message to the player when they have permission, not have permission and when its locked. (succeed, denied, locked)
  1. Play a sound to the player when they have permission, not have permission and when its locked. (succeed, denied, locked)
- 1. All of the messages supports PlaceholderAPI.
+ 1.  All of the messages supports PlaceholderAPI.
 
 ## Commands
-1. /lockdimension - shows all the commands - lockdimension.help
-1. /lockdimension reload - reloads the config.yml - lockdimension.reload
+1.  /lockdimension - shows all the commands - lockdimension.help
+1.  /lockdimension reload - reloads the config.yml - lockdimension.reload
 
 ---
 
