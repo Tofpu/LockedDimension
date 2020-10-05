@@ -10,15 +10,15 @@
 #    succeed-message: "Welcome welcome!" // If this is empty. it wouldn't send anything. when player has permission.
 #    broadcast-message: "%player_name% has traveled to the nether." // If this is empty. it wouldn't send anything. If the player succeeds to go to the dimension, it would broadcast a message to everyone.
 #    denied-message: "You do not have permission to go to the nether." // when player does not have message.
-#    locked-message: "Nether has been locked." If this is empty. it wouldn't send anything. when its locked.
+#    locked-message: "Nether is locked." If this is empty. it wouldn't send anything. when its locked.
 #    succeed-sound: CLICK // this is optional. played when the player is going to the world
 #    denied-sound: CLICK // this is optional. played when the player does not have permission.
 #    locked-sound: CLICK this is optional. played when the world is locked
 
 settings:
-  # if you would not like notified once there's an update, tick it to false
+  # if you would like not to get notified once there's an update, tick it to false
   notify-updates: true
-  # If you like to get notified if the world/sound doesn't exist. tick it to true
+  # If you would like to get notified if the world/sound doesn't exist (in the console). tick it to true
   check-errors: false
 
 dimensions:
@@ -28,10 +28,13 @@ dimensions:
     succeed-message: "Welcome welcome!"
     broadcast-message: "%player_name% has traveled to the nether."
     denied-message: "You do not have permission to go to the example_world."
-    locked-message: "example_world has been locked."
+    locked-message: "example_world is locked."
     succeed-sound: CLICK
     denied-sound: CLICK
     locked-sound: CLICK
+    succeed-commands:
+      - "[CONSOLE] Kick Tofpu"
+      -
   example_end:
     lock: true
     permission: "ld.example_end"
@@ -48,7 +51,7 @@ dimensions:
     succeed-message: ""
     broadcast-message: "%player_name% has traveled to the nether."
     denied-message: "You do not have permission to go to the example_the_end."
-    locked-message: "example_the_end has been locked."
+    locked-message: "example_the_end is locked."
     succeed-sound: CLICK
     denied-sound: CLICK
     locked-sound: CLICK

@@ -1,4 +1,4 @@
-package me.tofpu.lockeddimension.modules;
+package me.tofpu.lockeddimension.config;
 
 import me.tofpu.lockeddimension.LockedDimension;
 import org.bukkit.Sound;

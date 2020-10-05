@@ -4,7 +4,8 @@ import me.tofpu.lockeddimension.LockedDimension;
 import me.tofpu.lockeddimension.UtilsHelper;
 import me.tofpu.lockeddimension.builders.MessageBuilder;
 import me.tofpu.lockeddimension.builders.SoundBuilder;
-import org.apache.commons.lang.NullArgumentException;
+import me.tofpu.lockeddimension.config.ConfigChecker;
+import me.tofpu.lockeddimension.config.ConfigValues;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -18,7 +19,7 @@ public class DimensionManager {
     private static final List<Dimension> dimensions = new ArrayList<>();
     private static final String PATH = "dimensions.";
     
-    private FileConfiguration config;
+    private final FileConfiguration config;
     private ConfigChecker configChecker;
     private ConfigValues configValues;
     
@@ -38,7 +39,6 @@ public class DimensionManager {
     
     public void reload(FileConfiguration config){
         dimensions.clear();
-        this.config = config;
         this.configValues.setConfig(config);
         for(String key : config.getConfigurationSection("dimensions").getKeys(false)) {
             ConfigValues values = configValues;

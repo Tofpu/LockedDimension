@@ -1,5 +1,6 @@
-package me.tofpu.lockeddimension.modules;
+package me.tofpu.lockeddimension.config;
 
+import me.tofpu.lockeddimension.modules.DimensionManager;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConfigValues {

@@ -1,6 +1,6 @@
 package me.tofpu.lockeddimension;
 
-import me.tofpu.lockeddimension.updatechecker.SpigotUpdater;
+import me.tofpu.lockeddimension.config.updatechecker.SpigotUpdater;
 import me.tofpu.lockeddimension.commands.Reload;
 import me.tofpu.lockeddimension.commands.module.CommandManager;
 import me.tofpu.lockeddimension.modules.DimensionManager;
@@ -30,8 +30,7 @@ public final class LockedDimension extends JavaPlugin {
         
         new Reload(this).register();
         
-        Bukkit.getPluginManager().registerEvents(new SpigotUpdater(this), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerPortalListener(this), this);
+        registerListeners();
     }
     
     @Override
@@ -41,8 +40,12 @@ public final class LockedDimension extends JavaPlugin {
     
     public void reload(){
         reloadConfig();
-        DimensionManager.getDimensions().clear();
         this.manager.reload(getConfig());
+    }
+    
+    public void registerListeners(){
+        Bukkit.getPluginManager().registerEvents(new SpigotUpdater(this), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerPortalListener(this), this);
     }
     
     public DimensionManager getManager() {
