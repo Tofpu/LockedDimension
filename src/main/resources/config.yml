@@ -46,7 +46,7 @@ dimensions:
     lock: false
     permission: "ld.example_the_end"
     succeed-message: ""
-    broadcast-message: "%player_name% has traveled to the the nether."
+    broadcast-message: "%player_name% has traveled to the nether."
     denied-message: "You do not have permission to go to the example_the_end."
     locked-message: "example_the_end is locked."
     succeed-sound: CLICK
