@@ -1,7 +1,7 @@
 package me.tofpu.lockeddimension.config.updatechecker;
 
 import me.tofpu.lockeddimension.LockedDimension;
-import me.tofpu.lockeddimension.UtilsHelper;
+import me.tofpu.lockeddimension.utils.UtilsHelper;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;

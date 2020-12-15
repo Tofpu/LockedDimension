@@ -1,7 +1,8 @@
-package me.tofpu.lockeddimension.commands.module;
+package me.tofpu.lockeddimension.commands.manager;
 
 import me.tofpu.lockeddimension.LockedDimension;
-import me.tofpu.lockeddimension.UtilsHelper;
+import me.tofpu.lockeddimension.commands.handler.CommandHandler;
+import me.tofpu.lockeddimension.utils.UtilsHelper;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

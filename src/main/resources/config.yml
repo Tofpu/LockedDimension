@@ -32,9 +32,6 @@ dimensions:
     succeed-sound: CLICK
     denied-sound: CLICK
     locked-sound: CLICK
-    succeed-commands:
-      - "[CONSOLE] Kick Tofpu"
-      -
   example_end:
     lock: true
     permission: "ld.example_end"
@@ -49,7 +46,7 @@ dimensions:
     lock: false
     permission: "ld.example_the_end"
     succeed-message: ""
-    broadcast-message: "%player_name% has traveled to the nether."
+    broadcast-message: "%player_name% has traveled to the the nether."
     denied-message: "You do not have permission to go to the example_the_end."
     locked-message: "example_the_end is locked."
     succeed-sound: CLICK

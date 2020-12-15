@@ -1,7 +1,9 @@
-package me.tofpu.lockeddimension;
+package me.tofpu.lockeddimension.listeners;
 
+import me.tofpu.lockeddimension.LockedDimension;
 import me.tofpu.lockeddimension.modules.Dimension;
-import me.tofpu.lockeddimension.modules.DimensionManager;
+import me.tofpu.lockeddimension.modules.manager.DimensionManager;
+import me.tofpu.lockeddimension.utils.UtilsHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

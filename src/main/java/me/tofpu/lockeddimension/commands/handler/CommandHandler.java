@@ -1,5 +1,6 @@
-package me.tofpu.lockeddimension.commands.module;
+package me.tofpu.lockeddimension.commands.handler;
 
+import me.tofpu.lockeddimension.commands.manager.CommandManager;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;

@@ -1,11 +1,13 @@
-package me.tofpu.lockeddimension.modules;
+package me.tofpu.lockeddimension.modules.manager;
 
 import me.tofpu.lockeddimension.LockedDimension;
-import me.tofpu.lockeddimension.UtilsHelper;
 import me.tofpu.lockeddimension.builders.MessageBuilder;
 import me.tofpu.lockeddimension.builders.SoundBuilder;
 import me.tofpu.lockeddimension.config.ConfigChecker;
 import me.tofpu.lockeddimension.config.ConfigValues;
+import me.tofpu.lockeddimension.modules.Dimension;
+import me.tofpu.lockeddimension.modules.Options;
+import me.tofpu.lockeddimension.utils.UtilsHelper;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;

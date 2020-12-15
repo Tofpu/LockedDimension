@@ -1,9 +1,10 @@
 package me.tofpu.lockeddimension;
 
-import me.tofpu.lockeddimension.config.updatechecker.SpigotUpdater;
 import me.tofpu.lockeddimension.commands.Reload;
-import me.tofpu.lockeddimension.commands.module.CommandManager;
-import me.tofpu.lockeddimension.modules.DimensionManager;
+import me.tofpu.lockeddimension.commands.manager.CommandManager;
+import me.tofpu.lockeddimension.config.updatechecker.SpigotUpdater;
+import me.tofpu.lockeddimension.listeners.PlayerPortalListener;
+import me.tofpu.lockeddimension.modules.manager.DimensionManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
@@ -15,21 +16,16 @@ public final class LockedDimension extends JavaPlugin {
     
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        this.getConfig().options().copyDefaults(true);
         this.saveDefaultConfig();
-        this.enabledPAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
-        this.manager = new DimensionManager(this, this.getConfig()).init();
     
         int pluginId = 8999;
         new Metrics(this, pluginId);
     
-        CommandManager manager = new CommandManager(this);
-        PluginCommand pluginCommand = getCommand("lockeddimension");
-        pluginCommand.setExecutor(manager);
-        pluginCommand.setTabCompleter(manager);
+        this.manager = new DimensionManager(this, this.getConfig()).init();
+        this.enabledPAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
         
-        new Reload(this).register();
-        
+        registerCommands();
         registerListeners();
     }
     
@@ -41,6 +37,15 @@ public final class LockedDimension extends JavaPlugin {
     public void reload(){
         reloadConfig();
         this.manager.reload(getConfig());
+    }
+    
+    public void registerCommands(){
+        CommandManager manager = new CommandManager(this);
+        PluginCommand pluginCommand = getCommand("lockeddimension");
+        pluginCommand.setExecutor(manager);
+        pluginCommand.setTabCompleter(manager);
+    
+        new Reload(this).register();
     }
     
     public void registerListeners(){
