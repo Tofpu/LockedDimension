@@ -40,7 +40,7 @@ public final class LockedDimension extends JavaPlugin {
     }
     
     public void registerCommands(){
-        CommandManager manager = new CommandManager(this);
+        final CommandManager manager = new CommandManager(this);
         PluginCommand pluginCommand = getCommand("lockeddimension");
         pluginCommand.setExecutor(manager);
         pluginCommand.setTabCompleter(manager);
