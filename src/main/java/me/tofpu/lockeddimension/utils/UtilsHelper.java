@@ -30,4 +30,8 @@ public class UtilsHelper {
     public static void playSound(Player player, Sound sound){
         player.playSound(player.getLocation(), sound, 1f, 1f);
     }
+
+    public static String prefixColorize(String format) {
+        return color("&8[&5Locked&dDimension&8]&r " + format);
+    }
 }

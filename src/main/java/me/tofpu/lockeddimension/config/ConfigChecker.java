@@ -41,7 +41,7 @@ public class ConfigChecker {
         try {
             Sound.valueOf(key);
             return false;
-        } catch (IllegalArgumentException ignored){
+        } catch (NullPointerException ignored){
             return true;
         }
     }

@@ -6,7 +6,7 @@
 
     <groupId>me.Tofpu</groupId>
     <artifactId>LockedDimension</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>LockedDimension</name>
@@ -96,6 +96,11 @@
             <artifactId>bstats-bukkit</artifactId>
             <version>1.8</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.tofpu</groupId>
+            <artifactId>spigotupdater</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

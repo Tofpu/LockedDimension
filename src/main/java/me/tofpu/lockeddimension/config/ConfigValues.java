@@ -5,13 +5,14 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConfigValues {
     private FileConfiguration config;
-    private final String PATH = DimensionManager.getPATH();
     private String worldName;
+
+    private static final String PATH = DimensionManager.getPATH();
     
     public ConfigValues(FileConfiguration config){
         this.config = config;
     }
-    
+
     public void setConfig(FileConfiguration config) {
         this.config = config;
     }

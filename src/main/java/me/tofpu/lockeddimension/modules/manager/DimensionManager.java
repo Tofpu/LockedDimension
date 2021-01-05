@@ -17,34 +17,35 @@ import java.util.List;
 
 public class DimensionManager {
     private final LockedDimension lockedDimension;
-    
+
     private static final List<Dimension> dimensions = new ArrayList<>();
     private static final String PATH = "dimensions.";
-    
-    private final FileConfiguration config;
-    private ConfigChecker configChecker;
-    private ConfigValues configValues;
+
+    private FileConfiguration config;
+    private final ConfigChecker configChecker;
+    private final ConfigValues configValues;
     
     public DimensionManager(LockedDimension lockedDimension, FileConfiguration config){
         this.lockedDimension = lockedDimension;
-        this.configChecker = new ConfigChecker(lockedDimension);
         this.config = config;
+
+        this.configChecker = new ConfigChecker(lockedDimension);
+        this.configValues = new ConfigValues(config);
     }
     
     public DimensionManager init() {
-        this.configChecker = new ConfigChecker(lockedDimension);
-        this.configValues = new ConfigValues(config);
-        
         reload(config);
         return this;
     }
     
-    public void reload(FileConfiguration config){
+    public void reload(FileConfiguration fileConfiguration){
         dimensions.clear();
+        this.config = fileConfiguration;
         this.configValues.setConfig(config);
-        for(String key : config.getConfigurationSection("dimensions").getKeys(false)) {
-            ConfigValues values = configValues;
-            configChecker.check(key, values.getSucceedSound(), values.getDeniedSound(), values.getLockedSound());
+        for(String key : lockedDimension.getConfig().getConfigurationSection("dimensions").getKeys(false)) {
+            configValues.setWorldName(key);
+
+            configChecker.check(key, configValues.getSucceedSound(), configValues.getDeniedSound(), configValues.getLockedSound());
 
             Options options = getOptions(key, this.configValues);
             dimensions.add(new Dimension(options));
@@ -147,8 +148,7 @@ public class DimensionManager {
     
     public Dimension getDimension(String worldName){
         for(Dimension dimension : dimensions) {
-            Options options = dimension.getOptions();
-            if (options.getWorldName().equalsIgnoreCase(worldName)) {
+            if (dimension.getOptions().getWorldName().equalsIgnoreCase(worldName)) {
                 return dimension;
             }
         }

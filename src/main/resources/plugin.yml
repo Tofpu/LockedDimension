@@ -8,4 +8,5 @@ softdepend:
 description: A plugin which its purpose is lock certain dimensions behind a permission node.
 commands:
   lockeddimension:
-    description: A command
+    description: lockeddimension command
+    permission: lockeddimension.use

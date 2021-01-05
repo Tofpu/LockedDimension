@@ -11,7 +11,6 @@ public class Reload extends CommandHandler {
         this.lockedDimension = lockedDimension;
         
         super.setName("reload");
-        super.setPermission("lockeddimension.reload");
         super.setDescription("Reloads the config");
     }
     

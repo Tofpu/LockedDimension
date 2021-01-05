@@ -23,26 +23,31 @@ public class CommandManager implements CommandExecutor, TabCompleter {
     
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("lockeddimension.help")){
-            sender.sendMessage(UtilsHelper.color("&cYou do not have permission to execute this command."));
-            return true;
+        if (args.length == 0){
+            sender.sendMessage(UtilsHelper.prefixColorize("&dYou have to provide an argument!"));
+            sender.sendMessage(UtilsHelper.prefixColorize("&dType &5/lockeddimension help &dfor further help!"));
+            return false;
         }
+
+        if (args[0].equalsIgnoreCase("help")) {
+            String header = UtilsHelper.prefixColorize("&dLockedDimension Commands:");
+            sender.sendMessage(header);
+            commands.forEach(commandHandler ->
+                    sender.sendMessage(UtilsHelper.prefixColorize(" &8» &5/lockeddimension " + commandHandler.getName())));
+            return false;
+        }
+
         for(CommandHandler handler : commands){
-            if (args.length != 0 && handler.getName().equals(args[0])){
+            if (handler.getName().equals(args[0])){
                 if (sender.hasPermission(handler.getPermission())){
                     handler.onCommand(sender, args);
-                } else {
-                    sender.sendMessage(UtilsHelper.color("&cYou do not have permission to execute this command."));
                 }
                 return true;
             }
         }
-        String header = UtilsHelper.color(String.format("&8&m-&d&m-&8&m--|&r &5Locked&dDimension&8 &5&lV&d%s\n&8&m--|&r &dCommands:\n&8&m----|\n", lockedDimension.getDescription().getVersion()));
-        sender.sendMessage(header);
-        commands.forEach(commandHandler -> sender.sendMessage(UtilsHelper.color("&8&m-|&r &8/&5lockeddimension &d" + commandHandler.getName() + " &8- &d" + commandHandler.getDescription())));
-        String footer = UtilsHelper.color("&8&m----|&r\n&8&m--|&r &5&lMade &dby Tofpu \n&8&m-&d&m-&8&m--|&r &dStay safe and be careful out there!");
-        sender.sendMessage(footer);
-        
+
+        sender.sendMessage(UtilsHelper.prefixColorize("&dThis command does not exist!!"));
+        sender.sendMessage(UtilsHelper.prefixColorize("&dType &5/lockeddimension help &dfor further help!"));
         return false;
     }
     
@@ -52,6 +57,7 @@ public class CommandManager implements CommandExecutor, TabCompleter {
         List<String> completions = new ArrayList<>();
         List<String> commands = new ArrayList<>();
         if (args.length == 1){
+            commands.add("help");
             for(CommandHandler handler : CommandManager.commands){
                 if (sender.hasPermission(handler.getPermission())){
                     commands.add(handler.getName());
