@@ -19,8 +19,8 @@ It should be able to support Spigot version, 1.8.9 and higher!
 1. All of the messages supports PlaceholderAPI
 
 ## Commands
-1.  /lockdimension - shows all the commands - lockdimension.help
-1.  /lockdimension reload - reloads the config.yml - lockdimension.reload
+1.  /lockdimension - shows all the commands - lockdimension.use
+1.  /lockdimension reload - reloads the config.yml - lockdimension.yse
 
 ---
 
