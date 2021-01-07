@@ -1,6 +1,6 @@
-package me.tofpu.lockeddimension.config.action.type.types;
+package me.tofpu.lockeddimension.modules.action.type.types;
 
-import me.tofpu.lockeddimension.config.action.type.ActionType;
+import me.tofpu.lockeddimension.modules.action.type.ActionType;
 import org.bukkit.entity.Player;
 
 public class CommandType implements ActionType {

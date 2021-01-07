@@ -2,6 +2,10 @@
 # If you are going to use the sound feature, make sure you are using 1.13.2 sound names.
 # It doesn't matter if you are on lower versions. it'll work regardless. as long as its in the game, of course. If you need help, feel free to join our discord. (listed in the resource section)
 # Here's the link: https://helpch.at/docs/1.13.2/org/bukkit/Sound.html
+#
+# THE LIST OF DEFAULT PLACEHOLDERS
+# %PLAYER% RETURNS PLAYER NAME
+# %WORLD% RETURNS WORLD NAME
 
 settings:
   # if you would like not to get notified once there's an update, tick it to false
@@ -17,7 +21,7 @@ dimensions:
 
     action:
       # THE LIST OF ACTIONS
-      # [SOUND], [COMMAND], [MESSAGE], [BROADCAST]
+      # [SOUND], [COMMAND], [MESSAGE], [BROADCAST], [TITLE]
 
       # When the world is not locked and has the required permission, it issues this
       succeed:

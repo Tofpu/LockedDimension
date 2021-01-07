@@ -1,11 +1,11 @@
 package me.tofpu.lockeddimension.listeners;
 
 import me.tofpu.lockeddimension.LockedDimension;
-import me.tofpu.lockeddimension.config.action.Action;
-import me.tofpu.lockeddimension.config.action.type.ActionType;
-import me.tofpu.lockeddimension.config.action.type.register.TypeRegister;
+import me.tofpu.lockeddimension.modules.action.Action;
+import me.tofpu.lockeddimension.modules.action.type.ActionType;
+import me.tofpu.lockeddimension.modules.action.type.register.TypeRegister;
 import me.tofpu.lockeddimension.modules.dimension.Dimension;
-import me.tofpu.lockeddimension.modules.dimension.DimensionValues;
+import me.tofpu.lockeddimension.modules.dimension.values.DimensionValues;
 import me.tofpu.lockeddimension.modules.dimension.manager.DimensionManager;
 import me.tofpu.lockeddimension.utils.UtilsHelper;
 import org.bukkit.entity.Player;
@@ -34,6 +34,11 @@ public class PlayerPortalListener implements Listener {
 
         DimensionValues values = dimension.getDimensionValues();
         Action action = values.isLocked() ? values.getLocked() : !UtilsHelper.hasPermission(player, world) ? values.getDenied() : values.getSucceed();
+
+        if (action == values.getLocked() && player.hasPermission("lockeddimension.bypass")){
+            player.sendMessage(UtilsHelper.color(String.format("&dYou bypassed &5%s&d's lock for having &5'lockeddimension.bypass'&d node!", world)));
+            return;
+        }
 
         if (action != values.getSucceed()){
             e.setCancelled(true);

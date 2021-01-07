@@ -1,4 +1,4 @@
-package me.tofpu.lockeddimension.config.action;
+package me.tofpu.lockeddimension.modules.action;
 
 import java.util.List;
 

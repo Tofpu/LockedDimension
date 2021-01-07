@@ -1,9 +1,9 @@
-package me.tofpu.lockeddimension.modules.dimension;
+package me.tofpu.lockeddimension.modules.dimension.values;
 
 import me.tofpu.lockeddimension.config.Values;
-import me.tofpu.lockeddimension.config.action.actions.Denied;
-import me.tofpu.lockeddimension.config.action.actions.Locked;
-import me.tofpu.lockeddimension.config.action.actions.Succeed;
+import me.tofpu.lockeddimension.modules.action.actions.Denied;
+import me.tofpu.lockeddimension.modules.action.actions.Locked;
+import me.tofpu.lockeddimension.modules.action.actions.Succeed;
 
 public class DimensionValues {
     private Succeed succeed;

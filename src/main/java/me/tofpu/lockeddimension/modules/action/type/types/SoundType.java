@@ -1,6 +1,6 @@
-package me.tofpu.lockeddimension.config.action.type.types;
+package me.tofpu.lockeddimension.modules.action.type.types;
 
-import me.tofpu.lockeddimension.config.action.type.ActionType;
+import me.tofpu.lockeddimension.modules.action.type.ActionType;
 import me.tofpu.lockeddimension.utils.UtilsHelper;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

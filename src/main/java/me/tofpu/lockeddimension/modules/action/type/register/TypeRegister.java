@@ -1,10 +1,7 @@
-package me.tofpu.lockeddimension.config.action.type.register;
+package me.tofpu.lockeddimension.modules.action.type.register;
 
-import me.tofpu.lockeddimension.config.action.type.ActionType;
-import me.tofpu.lockeddimension.config.action.type.types.BroadcastType;
-import me.tofpu.lockeddimension.config.action.type.types.CommandType;
-import me.tofpu.lockeddimension.config.action.type.types.MessageType;
-import me.tofpu.lockeddimension.config.action.type.types.SoundType;
+import me.tofpu.lockeddimension.modules.action.type.ActionType;
+import me.tofpu.lockeddimension.modules.action.type.types.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +14,7 @@ public class TypeRegister {
         register(new CommandType());
         register(new MessageType());
         register(new SoundType());
+        register(new TitleType());
     }
 
     public static void register(ActionType actionType){

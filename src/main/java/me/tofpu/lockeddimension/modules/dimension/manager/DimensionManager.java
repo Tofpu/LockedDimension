@@ -2,7 +2,7 @@ package me.tofpu.lockeddimension.modules.dimension.manager;
 
 import me.tofpu.lockeddimension.config.Values;
 import me.tofpu.lockeddimension.modules.dimension.Dimension;
-import me.tofpu.lockeddimension.modules.dimension.DimensionValues;
+import me.tofpu.lockeddimension.modules.dimension.values.DimensionValues;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashSet;

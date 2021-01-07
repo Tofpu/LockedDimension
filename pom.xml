@@ -45,6 +45,10 @@
                                     <pattern>org.bstats</pattern>
                                     <shadedPattern>me.tofpu.lockeddimension.libs.bstats</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>me.tofpu.spigotupdater</pattern>
+                                    <shadedPattern>me.tofpu.lockeddimension.libs.spigotupdater</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>
@@ -100,7 +104,8 @@
         <dependency>
             <groupId>me.tofpu</groupId>
             <artifactId>spigotupdater</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

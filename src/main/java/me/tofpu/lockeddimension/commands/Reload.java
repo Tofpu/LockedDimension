@@ -20,6 +20,6 @@ public class Reload extends CommandHandler {
         lockedDimension.reload();
         long end = System.currentTimeMillis();
         int time = (int) (end - start);
-        sender.sendMessage(String.format(UtilsHelper.color("&8[&5Locked&dDimension&8] &dYou have successfully reloaded the &7config.yml &8(%dms)"), time));
+        sender.sendMessage(String.format(UtilsHelper.color("&8[&5Locked&dDimension&8] &dYou have successfully reloaded the &5config.yml&d! (%d&5ms&d)"), time));
     }
 }

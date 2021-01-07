@@ -1,4 +1,4 @@
-package me.tofpu.lockeddimension.config.action.type;
+package me.tofpu.lockeddimension.modules.action.type;
 
 import org.bukkit.entity.Player;
 

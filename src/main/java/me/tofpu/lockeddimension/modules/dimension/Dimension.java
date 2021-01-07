@@ -1,5 +1,7 @@
 package me.tofpu.lockeddimension.modules.dimension;
 
+import me.tofpu.lockeddimension.modules.dimension.values.DimensionValues;
+
 public class Dimension {
     private final String world;
     private DimensionValues dimensionValues;
