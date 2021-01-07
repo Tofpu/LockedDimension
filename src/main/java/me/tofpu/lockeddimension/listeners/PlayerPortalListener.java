@@ -1,8 +1,12 @@
 package me.tofpu.lockeddimension.listeners;
 
 import me.tofpu.lockeddimension.LockedDimension;
-import me.tofpu.lockeddimension.modules.Dimension;
-import me.tofpu.lockeddimension.modules.manager.DimensionManager;
+import me.tofpu.lockeddimension.config.action.Action;
+import me.tofpu.lockeddimension.config.action.type.ActionType;
+import me.tofpu.lockeddimension.config.action.type.register.TypeRegister;
+import me.tofpu.lockeddimension.modules.dimension.Dimension;
+import me.tofpu.lockeddimension.modules.dimension.DimensionValues;
+import me.tofpu.lockeddimension.modules.dimension.manager.DimensionManager;
 import me.tofpu.lockeddimension.utils.UtilsHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,22 +24,29 @@ public class PlayerPortalListener implements Listener {
     public void onPlayerPortal(PlayerPortalEvent e) {
         Player player = e.getPlayer();
         String world = e.getTo().getWorld().getName();
-        
+
         DimensionManager manager = lockedDimension.getManager();
         Dimension dimension = manager.getDimension(world);
-    
-        if (dimension != null) {
-            if (dimension.getOptions().isLocked()){
-                e.setCancelled(true);
-                manager.lock(player, world);
-                return;
+
+        if (dimension == null) {
+            return;
+        }
+
+        DimensionValues values = dimension.getDimensionValues();
+        Action action = values.isLocked() ? values.getLocked() : !UtilsHelper.hasPermission(player, world) ? values.getDenied() : values.getSucceed();
+
+        if (action != values.getSucceed()){
+            e.setCancelled(true);
+        }
+
+        for (String i : action.getAction()) {
+            String[] args = i.split(" ");
+
+            ActionType actionType = TypeRegister.get(args[0]);
+            if (actionType == null) {
+                continue;
             }
-            if (!UtilsHelper.hasPermission(player, world)) {
-                e.setCancelled(true);
-                manager.deny(player, world);
-            } else {
-                manager.success(player, world);
-            }
+            actionType.playAction(player, args);
         }
     }
 }

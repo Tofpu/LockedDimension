@@ -4,7 +4,7 @@ import me.tofpu.lockeddimension.commands.Reload;
 import me.tofpu.lockeddimension.commands.manager.CommandManager;
 import me.tofpu.lockeddimension.listeners.PlayerJoinListener;
 import me.tofpu.lockeddimension.listeners.PlayerPortalListener;
-import me.tofpu.lockeddimension.modules.manager.DimensionManager;
+import me.tofpu.lockeddimension.modules.dimension.manager.DimensionManager;
 import me.tofpu.spigotupdater.updated.Updater;
 import me.tofpu.spigotupdater.updated.callback.CallBack;
 import me.tofpu.spigotupdater.updated.utils.SpigotUtil;
@@ -21,13 +21,13 @@ public final class LockedDimension extends JavaPlugin {
     private DimensionManager manager;
     private Updater updater;
 
-    private boolean enabledPAPI;
+    private static boolean enabledPAPI;
     private String url;
-    
+
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
-    
+
         int pluginId = 8999;
         new Metrics(this, pluginId);
 
@@ -46,33 +46,33 @@ public final class LockedDimension extends JavaPlugin {
             }
         });
 
-        this.manager = new DimensionManager(this, this.getConfig()).init();
-        this.enabledPAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
-        
+        this.manager = new DimensionManager(this.getConfig());
+        enabledPAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
+
         registerCommands();
         registerListeners();
     }
-    
+
     @Override
     public void onDisable() {
         // Plugin shutdown logic
     }
-    
+
     public void reload(){
         reloadConfig();
         this.manager.reload(getConfig());
     }
-    
+
     public void registerCommands(){
         final CommandManager manager = new CommandManager(this);
         PluginCommand pluginCommand = getCommand("lockeddimension");
         Validate.notNull(pluginCommand, "lockeddimension command cannot be null (plugin.yml corrupted?)");
         pluginCommand.setExecutor(manager);
         pluginCommand.setTabCompleter(manager);
-    
+
         new Reload(this).register();
     }
-    
+
     public void registerListeners(){
         final PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new PlayerJoinListener(this), this);
@@ -83,7 +83,7 @@ public final class LockedDimension extends JavaPlugin {
         return url;
     }
 
-    public boolean isEnabledPAPI() {
+    public static boolean isEnabledPAPI() {
         return enabledPAPI;
     }
 
