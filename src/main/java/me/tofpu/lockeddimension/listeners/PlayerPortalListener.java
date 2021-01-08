@@ -27,22 +27,18 @@ public class PlayerPortalListener implements Listener {
 
         DimensionManager manager = lockedDimension.getManager();
         Dimension dimension = manager.getDimension(world);
-
-        if (dimension == null) {
-            return;
-        }
+        if (dimension == null) return;
 
         DimensionValues values = dimension.getDimensionValues();
         Action action = values.isLocked() ? values.getLocked() : !UtilsHelper.hasPermission(player, world) ? values.getDenied() : values.getSucceed();
+        if (action == null) return;
 
         if (action == values.getLocked() && player.hasPermission("lockeddimension.bypass")){
             player.sendMessage(UtilsHelper.color(String.format("&dYou bypassed &5%s&d's lock for having &5'lockeddimension.bypass'&d node!", world)));
             return;
         }
 
-        if (action != values.getSucceed()){
-            e.setCancelled(true);
-        }
+        if (action != values.getSucceed()) e.setCancelled(true);
 
         for (String i : action.getAction()) {
             String[] args = i.split(" ");
