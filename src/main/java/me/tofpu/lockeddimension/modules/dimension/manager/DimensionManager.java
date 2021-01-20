@@ -3,6 +3,7 @@ package me.tofpu.lockeddimension.modules.dimension.manager;
 import me.tofpu.lockeddimension.config.Values;
 import me.tofpu.lockeddimension.modules.dimension.Dimension;
 import me.tofpu.lockeddimension.modules.dimension.values.DimensionValues;
+import me.tofpu.lockeddimension.modules.gui.handler.GuiHandler;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashSet;
@@ -31,6 +32,7 @@ public class DimensionManager {
 
             DIMENSIONS.add(dimension);
         }
+        GuiHandler.load();
     }
 
     public Dimension getDimension(String world) {
