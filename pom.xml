@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.Tofpu</groupId>
+    <groupId>me.tofpu</groupId>
     <artifactId>LockedDimension</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>LockedDimension</name>
@@ -44,6 +44,10 @@
                                 <relocation>
                                     <pattern>org.bstats</pattern>
                                     <shadedPattern>me.tofpu.lockeddimension.libs.bstats</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>me.tofpu.spigotupdater</pattern>
+                                    <shadedPattern>me.tofpu.lockeddimension.libs.spigotupdater</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -101,6 +105,7 @@
             <groupId>me.tofpu</groupId>
             <artifactId>spigotupdater</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

@@ -39,9 +39,10 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
         for(CommandHandler handler : commands){
             if (handler.getName().equals(args[0])){
-                if (sender.hasPermission(handler.getPermission())){
-                    handler.onCommand(sender, args);
+                if (!handler.getPermission().isEmpty()){
+                    if (!sender.hasPermission(handler.getPermission())) return true;
                 }
+                handler.onCommand(sender, args);
                 return true;
             }
         }
