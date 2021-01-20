@@ -1,59 +1,41 @@
 # IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT /
-# If you are going to use the sound feature, make sure you are using 1.13.2 sound names.
+# If you are going to use the sound feature, make sure you are using 1.16.4 sound names.
 # It doesn't matter if you are on lower versions. it'll work regardless. as long as its in the game, of course. If you need help, feel free to join our discord. (listed in the resource section)
-# Here's the link: https://helpch.at/docs/1.13.2/org/bukkit/Sound.html
+# Here's the link: https://helpch.at/docs/1.16.4/org/bukkit/Sound.html
 
 # THE LIST OF DEFAULT PLACEHOLDERS
 # %PLAYER% RETURNS PLAYER NAME
 # %WORLD% RETURNS WORLD NAME
 
-# settings:
-    # if you would like not to get notified once there's an update, tick it to false
-  # notify-updates: true
-    # If you would like to get notified if the world/sound doesn't exist (in the console). tick it to true
-  # check-errors: false
-
-# world_nether:
-  #   If true, It'll prevent everyone from going into the world
-  #   If false, It'll let everyone that has the required permission to go through
-  # lock: false
-
-  # action:
-      # THE LIST OF ACTIONS
-      # [SOUND], [COMMAND], [MESSAGE], [BROADCAST], [TITLE]
-
-      # When the world is not locked and has the required permission, it issues this
-    # succeed:
-      # - "[SOUND] CLICK"
-      # - "[BROADCAST] &6%player_name% &ehas traveled to &6%world%"
-
-      # When they don't have the required permission, it issues this
-    # denied:
-      # - "[SOUND] CLICK"
-      # - "[MESSAGE] &cYou are not allowed to go to %world%"
-
-      # When the world is locked, it issues this
-    # locked:
-      # - "[SOUND] CLICK"
-      # - "[MESSAGE] &c%world% is locked."
-
 settings:
+  # if you would like not to get notified once there's an update, tick it to false
   notify-updates: true
+  # If you would like to get notified if the world/sound doesn't exist (in the console). tick it to true
   check-errors: false
 
 dimensions:
+  #   If true, It'll prevent everyone from going into the world
+  #   If false, It'll let everyone that has the required permission to go through
   world_nether:
+    #   If true, It'll prevent everyone from going into the world
+    #   If false, It'll let everyone that has the required permission to go through
     lock: false
 
     action:
-      succeed:
-        - "[SOUND] CLICK"
-        - "[BROADCAST] &6%player_name% &ehas traveled to &6%world%"
+      # THE LIST OF ACTIONS (ALL HAS TO BE CAPITALIZED)
+      # [SOUND], [COMMAND], [MESSAGE], [BROADCAST], [TITLE], [CONSOLE], [VELOCITY]
 
+      # When the world is not locked and has the required permission, it issues this
+      succeed:
+        - "[SOUND] UI_BUTTON_CLICK"
+        - "[BROADCAST] &6%player% &ehas traveled to &6%world%"
+
+      # When they don't have the required permission, it issues this
       denied:
-        - "[SOUND] CLICK"
+        - "[SOUND] UI_BUTTON_CLICK"
         - "[MESSAGE] &cYou are not allowed to go to %world%"
 
+      # When the world is locked, it issues this
       locked:
-        - "[SOUND] CLICK"
+        - "[SOUND] UI_BUTTON_CLICK"
         - "[MESSAGE] &c%world% is locked."

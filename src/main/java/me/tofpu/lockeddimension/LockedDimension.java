@@ -1,20 +1,15 @@
 package me.tofpu.lockeddimension;
 
-import me.tofpu.lockeddimension.commands.Edit;
 import me.tofpu.lockeddimension.commands.Reload;
 import me.tofpu.lockeddimension.commands.manager.CommandManager;
-import me.tofpu.lockeddimension.gui.MainGui;
 import me.tofpu.lockeddimension.listeners.PlayerJoinListener;
 import me.tofpu.lockeddimension.listeners.PlayerPortalListener;
 import me.tofpu.lockeddimension.modules.dimension.manager.DimensionManager;
-import me.tofpu.lockeddimension.modules.gui.child.IChildGui;
-import me.tofpu.lockeddimension.modules.gui.child.implemention.ChildGui;
-import me.tofpu.lockeddimension.modules.gui.handler.GuiHandler;
-import me.tofpu.lockeddimension.modules.gui.implemention.Gui;
 import me.tofpu.spigotupdater.updated.Updater;
 import org.apache.commons.lang.Validate;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -49,7 +44,6 @@ public final class LockedDimension extends JavaPlugin {
 //        });
 
         this.manager = new DimensionManager(this.getConfig());
-        MainGui.load();
 
         enabledPAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
 
@@ -75,7 +69,6 @@ public final class LockedDimension extends JavaPlugin {
         pluginCommand.setTabCompleter(manager);
 
         new Reload(this).register();
-        new Edit().register();
     }
 
     public void registerListeners(){

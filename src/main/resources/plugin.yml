@@ -2,7 +2,7 @@ name: LockedDimension
 description: You could disable, lock dimensions behind permissions nodes, and much more!
 version: ${project.version}
 main: me.tofpu.lockeddimension.LockedDimension
-api-version: 1.13
+api-version: 1.16
 authors: [Tofpu]
 softdepend:
   - PlaceholderAPI

@@ -15,6 +15,8 @@ public class TypeRegister {
         register(new MessageType());
         register(new SoundType());
         register(new TitleType());
+        register(new ConsoleType());
+        register(new VelocityType());
     }
 
     public static void register(ActionType actionType){
@@ -27,7 +29,7 @@ public class TypeRegister {
 
     public static ActionType get(String actionType){
         for (ActionType type : ACTION_TYPES){
-            if (type.getType().equalsIgnoreCase(actionType)){
+            if (type.getType().equals(actionType)){
                 return type;
             }
         }
