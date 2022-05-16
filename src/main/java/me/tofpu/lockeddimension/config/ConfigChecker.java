@@ -1,6 +1,7 @@
 package me.tofpu.lockeddimension.config;
 
 import me.tofpu.lockeddimension.LockedDimension;
+import me.tofpu.lockeddimension.utils.XSound;
 import org.bukkit.Sound;
 import org.bukkit.World;
 
@@ -12,19 +13,24 @@ public class ConfigChecker {
     }
     
     public void check(String world, String succeed, String denied, String locked){
-        if (getCheckError()){
-            if (!isWorldExist(world)){
-                warn(world + " world does not exist. make sure its spelled correctly.");
-            }
-            if (isSoundNull(succeed)){
-                warn(succeed + " sound does not exist. make sure its spelled correctly.");
-            }
-            if (isSoundNull(denied)){
-                warn(denied + " sound does not exist. make sure its spelled correctly.");
-            }
-            if (isSoundNull(locked)){
-                warn(locked + " sound does not exist. make sure its spelled correctly.");
-            }
+        if (!isCheckErrorEnabled()) {
+            return;
+        }
+
+        if (!isWorldExist(world)){
+            warn(world + " world does not exist. make sure its spelled correctly.");
+        }
+
+        if (isSoundNull(succeed)){
+            warn(succeed + " sound does not exist. make sure its spelled correctly.");
+        }
+
+        if (isSoundNull(denied)){
+            warn(denied + " sound does not exist. make sure its spelled correctly.");
+        }
+
+        if (isSoundNull(locked)){
+            warn(locked + " sound does not exist. make sure its spelled correctly.");
         }
     }
     
@@ -38,19 +44,14 @@ public class ConfigChecker {
     }
     
     public boolean isSoundNull(String key){
-        try {
-            Sound.valueOf(key);
-            return false;
-        } catch (NullPointerException ignored){
-            return true;
-        }
+        return XSound.parse(key) == null;
     }
     
     public void warn(String message){
         lockedDimension.getLogger().warning(message);
     }
     
-    public boolean getCheckError(){
+    public boolean isCheckErrorEnabled(){
         return lockedDimension.getConfig().getBoolean("settings.check-errors");
     }
 }

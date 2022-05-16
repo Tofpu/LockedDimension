@@ -5,7 +5,6 @@ import me.tofpu.lockeddimension.modules.Dimension;
 import me.tofpu.lockeddimension.modules.Options;
 import me.tofpu.lockeddimension.modules.manager.DimensionManager;
 import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 public class UtilsHelper {
@@ -17,18 +16,18 @@ public class UtilsHelper {
         return PlaceholderAPI.setPlaceholders(player, message);
     }
     
-    public static boolean hasPermission(Player player, String worldName){
-        for(Dimension dimension : DimensionManager.getDimensions()){
-            Options options = dimension.getOptions();
-            if (options.getWorldName().equalsIgnoreCase(worldName)) {
-                return player.hasPermission(options.getPermission());
-            }
+    public static boolean hasPermission(final Dimension dimension, Player player, String worldName){
+        final Options options = dimension.getOptions();
+
+        if (options.getPermission().isEmpty()) {
+            return true;
         }
-        return false;
+
+        return player.hasPermission(options.getPermission());
     }
     
-    public static void playSound(Player player, Sound sound){
-        player.playSound(player.getLocation(), sound, 1f, 1f);
+    public static void playSound(Player player, String sound){
+        XSound.play(player, sound);
     }
 
     public static String prefixColorize(String format) {
