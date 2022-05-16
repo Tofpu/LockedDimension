@@ -12,30 +12,33 @@ import org.bukkit.event.player.PlayerPortalEvent;
 public class PlayerPortalListener implements Listener {
     private final LockedDimension lockedDimension;
     
-    public PlayerPortalListener(LockedDimension lockedDimension) {
+    public PlayerPortalListener(final LockedDimension lockedDimension) {
         this.lockedDimension = lockedDimension;
     }
     
     @EventHandler
-    public void onPlayerPortal(PlayerPortalEvent e) {
-        Player player = e.getPlayer();
-        String world = e.getTo().getWorld().getName();
+    public void onPlayerPortal(final PlayerPortalEvent e) {
+        final Player player = e.getPlayer();
+        final String world = e.getTo().getWorld().getName();
         
-        DimensionManager manager = lockedDimension.getManager();
-        Dimension dimension = manager.getDimension(world);
-    
-        if (dimension != null) {
-            if (dimension.getOptions().isLocked()){
-                e.setCancelled(true);
-                manager.lock(player, world);
-                return;
-            }
-            if (!UtilsHelper.hasPermission(player, world)) {
-                e.setCancelled(true);
-                manager.deny(player, world);
-            } else {
-                manager.success(player, world);
-            }
+        final DimensionManager manager = lockedDimension.getManager();
+        final Dimension dimension = manager.getDimension(world);
+
+        if (dimension == null) {
+            return;
+        }
+
+        if (dimension.getOptions().isLocked()){
+            e.setCancelled(true);
+            manager.lock(dimension, player, world);
+            return;
+        }
+
+        if (!UtilsHelper.hasPermission(dimension, player, world)) {
+            e.setCancelled(true);
+            manager.deny(dimension, player, world);
+        } else {
+            manager.success(dimension, player, world);
         }
     }
 }

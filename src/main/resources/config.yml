@@ -1,12 +1,9 @@
 # IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT / IMPORTANT /
-# If you are going to use the sound feature, make sure you are using 1.13.2 sound names.
-# It doesn't matter if you are on lower versions. it'll work regardless. as long as its in the game, of course. If you need help, feel free to join our discord. (listed in the resource section)
-# Here's the link: https://helpch.at/docs/1.13.2/org/bukkit/Sound.html
-#
 # EXAMPLE
 #  (WORLD-NAME):
 #    lock: false // If its enabled, it would not let the player go to the dimension through the portal.
-#    permission: "ld.nether" // This cannot be empty. If the player does not have this permission. it would not let them through.
+#    permission: "ld.nether" // This can be empty. If the player does not have this
+  # permission. it would not let them through.
 #    succeed-message: "Welcome welcome!" // If this is empty. it wouldn't send anything. when player has permission.
 #    broadcast-message: "%player_name% has traveled to the nether." // If this is empty. it wouldn't send anything. If the player succeeds to go to the dimension, it would broadcast a message to everyone.
 #    denied-message: "You do not have permission to go to the nether." // when player does not have message.
@@ -32,12 +29,12 @@ dimensions:
     succeed-sound: CLICK
     denied-sound: CLICK
     locked-sound: CLICK
-  example_end:
+  example_nether:
     lock: true
-    permission: "ld.example_end"
+    permission: "ld.example_nether"
     succeed-message: ""
     broadcast-message: "%player_name% has traveled to the nether."
-    denied-message: "You do not have permission to go to the example_end."
+    denied-message: "You do not have permission to go to the example_nether."
     locked-message: ""
     succeed-sound: CLICK
     denied-sound: CLICK
