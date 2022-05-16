@@ -1,37 +1,48 @@
+# The documentation page can be seen at https://docs.tofpu.me/plugins/lockeddimension.
+
 settings:
-  # if you would like not to get notified once there's an update, tick it to false
+  # Get notified when there's an update.
   notify-updates: true
-  # If you would like to get notified if the world/sound doesn't exist (in the console). tick it to true
+  # Get notified when you configured something wrong.
   check-errors: false
 
 dimensions:
-  example_world:
+  world_name:
+    # Restrict the dimension entrance?
     lock: false
-    permission: "ld.example_world"
-    succeed-message: "Welcome welcome!"
-    broadcast-message: "%player_name% has traveled to the nether."
-    denied-message: "You do not have permission to go to the example_world."
-    locked-message: "example_world is locked."
+
+    # Require the player to have this permission node;
+    # can be left empty.
+    permission: "required_permission"
+
+    # This message is sent to the player when they go through
+    # the dimension successfully; can be left empty.
+    succeed-message: "Welcome to World!"
+
+    # This message is broadcasted globally when they go through
+    # the dimension successfully; can be left empty.
+    broadcast-message: "%player_name% has traveled to the world!"
+
+    # This message is sent to the player when they lack the
+    # the permission node above; this won't be triggered if
+    # the permission node was left empty.
+    denied-message: "You lack the permission to go through this dimension!"
+
+    # This message is sent to the player when the
+    # dimension is locked; this won't be sent if
+    # the lock option was set to false.
+    locked-message: "The dimension is locked. Come back later!"
+
+    # This sound is sent to the player when they go through
+    # the dimension successfully; can be left empty.
     succeed-sound: CLICK
+
+    # This sound is sent to the player when they lack the
+    # the permission node above; this won't be triggered if
+    # the permission node was left empty.
     denied-sound: CLICK
-    locked-sound: CLICK
-  example_nether:
-    lock: true
-    permission: "ld.example_nether"
-    succeed-message: ""
-    broadcast-message: "%player_name% has traveled to the nether."
-    denied-message: "You do not have permission to go to the example_nether."
-    locked-message: ""
-    succeed-sound: CLICK
-    denied-sound: CLICK
-    locked-sound: CLICK
-  example_the_end:
-    lock: false
-    permission: "ld.example_the_end"
-    succeed-message: ""
-    broadcast-message: "%player_name% has traveled to the nether."
-    denied-message: "You do not have permission to go to the example_the_end."
-    locked-message: "example_the_end is locked."
-    succeed-sound: CLICK
-    denied-sound: CLICK
+
+    # This sound is sent to the player when the
+    # dimension is locked; this won't be triggered
+    # if the lock option was set to false.
     locked-sound: CLICK
