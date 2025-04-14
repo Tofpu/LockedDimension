@@ -34,15 +34,9 @@ public final class LockedDimension extends JavaPlugin {
         this.updater = new Updater(this, 84331);
         updater.result(new CallBack() {
             @Override
-            public void olderVersion(JavaPlugin javaPlugin, int currentVersion, int latestVersion) {
-                super.olderVersion(javaPlugin, currentVersion, latestVersion);
+            public void olderVersion(int currentVersion, int latestVersion) {
                 url = SpigotUtil.getResultAsync("https://raw.githubusercontent.com/Tofpu/LockedDimension/master/url");
                 getLogger().log(Level.WARNING, String.format("You can download the latest version at: %s", url));
-            }
-
-            @Override
-            public void isUpdated(JavaPlugin javaPlugin, int latestVersion) {
-                super.isUpdated(javaPlugin, latestVersion);
             }
         });
 
